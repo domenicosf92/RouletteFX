@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Game {
 
     private int [] roulette = new int [37];
-    private int [] red = new int[] {-1,1,-1,3,-1,5,-1,7,-1,9,-1,-1,12,-1,14,-1,16,-1,18,19,-1,21,-1,23,-1,25,-1,27,-1,-1,30,-1,32,-1,34,-1,36};
+    private int [] red = new int[] {-1,1,-1,3,-1,5,-1,7,-1,9,-1,-1,12,-1,14,-1,16,-1,18,19,-1,21,-1,23,-1,25,-1,27,-1,-1,30,-1,32,-1,34,-1,36}; //ho inserito -1 negli spazi del vettore corrispondenti al numero mancante del vettore roulette
     private int [] black = new int[] {-1,-1,2,-1,4,-1,6,-1,8,-1,10,11,-1,13,-1,15,-1,17,-1,-1,20,-1,22,-1,24,-1,26,-1,28,29,-1,31,-1,33,-1,35,-1};
     private int passe [] = new int[18];
     private int manque [] = new int[18];
@@ -36,9 +36,12 @@ public class Game {
         }
     }
 
-    private int spin(){
+    public int getSpinValue() {
+        return spinValue;
+    }
+
+    private void spin(){
         this.spinValue = (int) (Math.random() * 36);
-        return this.spinValue;
     }
 
     public boolean betNumbers(Player player, Bet bet){
@@ -76,6 +79,7 @@ public class Game {
         if (player.getCredit()< bet.bets.get(0)) {
             return false;
         }
+        bet.clearBets(); //to clear array of bets before method stars
         player.removeCredit(bet.bets.get(0));
         this.credit += bet.bets.get(0);
         this.spin();
@@ -98,6 +102,7 @@ public class Game {
         if (player.getCredit()< bet.bets.get(0)) {
             return false;
         }
+        bet.clearBets(); //to clear array of bets before method stars
         player.removeCredit(bet.bets.get(0));
         this.credit += bet.bets.get(0);
         this.spin();
@@ -115,6 +120,7 @@ public class Game {
         if (player.getCredit()< bet.bets.get(0)) {
             return false;
         }
+        bet.clearBets(); //to clear array of bets before method stars
         player.removeCredit(bet.bets.get(0));
         this.credit += bet.bets.get(0);
         this.spin();

@@ -14,4 +14,12 @@ public class Bet {
     public void addBet (int bet){
         this.bets.add(bet);
     }
+
+    public void clearBets(){
+        this.bets.clear();
+    }
+
+    public void clearNumbers(){
+        this.numbers.clear();
+    }
 }
